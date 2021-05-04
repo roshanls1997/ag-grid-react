@@ -38,23 +38,25 @@ class GridAppComponent extends Component {
           headerName: "id",
           headerCheckboxSelection: true,
           headerCheckboxSelectionFilteredOnly: true,
-          sortable: false,
-          filter: false,
+          sortable: true,
+          enablePivot: true,
+          filter: true,
           resizable: true,
           rowDrag: true,
           field: "id",
-          width: 120,
+          width: 140,
         },
         {
           headerName: "name",
           field: "first_name",
           filter: "agTextColumnFilter",
-          width: 120,
+          width: 180,
           sortable: true,
+          enablePivot: true,
           tooltipField: "first_name",
           enablePivot: true,
           resizable: true,
-          editable: false,
+          editable: true,
         },
         {
           headerName: "last name",
@@ -64,7 +66,7 @@ class GridAppComponent extends Component {
           filter: "agTextColumnFilter",
           enablePivot: true,
           resizable: true,
-          editable: false,
+          editable: true,
           width: 140,
         },
         {
@@ -72,21 +74,22 @@ class GridAppComponent extends Component {
           field: "email",
           resizable: true,
           sortable: true,
+          enablePivot: true,
           filter: "agTextColumnFilter",
           enablePivot: true,
-          editable: false,
-          width: 140,
+          editable: true,
+          width: 180,
         },
         {
           headerName: "country",
           field: "country",
-          filter: "agSetColumnFilter",
+          filter: "agTextColumnFilter",
           cellEditor: "agRichSelectCellEditor",
           cellEditorParams: {
-            values: ["india", "USA", "Russia", "China"],
+            values: ["China","test"],
           },
           onCellValueChanged: this.onCellValueChanged.bind(this),
-          width: 155,
+          width: 185,
           resizable: true,
           sortable: true,
           enablePivot: true,
@@ -99,8 +102,8 @@ class GridAppComponent extends Component {
           sortable: true,
           filter: "agTextColumnFilter",
           enablePivot: true,
-          editable: false,
-          width: 140,
+          editable: true,
+          width: 180,
         },
         {
           headerName: "city",
@@ -109,8 +112,8 @@ class GridAppComponent extends Component {
           sortable: true,
           filter: "agTextColumnFilter",
           enablePivot: true,
-          editable: false,
-          width: 140,
+          editable: true,
+          width: 160,
         },
         {
           headerName: "state",
@@ -119,7 +122,7 @@ class GridAppComponent extends Component {
           sortable: true,
           filter: "agTextColumnFilter",
           enablePivot: true,
-          editable: false,
+          editable: true,
           width: 140,
         },
         {
@@ -129,8 +132,8 @@ class GridAppComponent extends Component {
           sortable: true,
           filter: "agTextColumnFilter",
           enablePivot: true,
-          editable: false,
-          width: 140,
+          editable: true,
+          width: 180,
         },
         {
           headerName: "ip_address",
@@ -139,8 +142,8 @@ class GridAppComponent extends Component {
           sortable: true,
           filter: "agTextColumnFilter",
           enablePivot: true,
-          editable: false,
-          width: 140,
+          editable: true,
+          width: 180,
         },
         {
           headerName: "gender",
@@ -149,8 +152,8 @@ class GridAppComponent extends Component {
           sortable: true,
           filter: "agTextColumnFilter",
           enablePivot: true,
-          editable: false,
-          width: 140,
+          editable: true,
+          width: 180,
         },
       ],
     };
@@ -158,18 +161,15 @@ class GridAppComponent extends Component {
 
   onGridReady = (params) => {
     this.api = params.api;
-    this.api.setSuppressRowDrag(false);
+    this.api.setSuppressRowDrag(true);
     this.columnApi = params.columnApi;
+    this.columnApi.setPivotMode(false);
+
   };
 
   onSelectionChanged(event) {}
 
-  onCellValueChanged(params, newValue) {
-    //const sysid = params.data.sys_id;
-   // const newVal = params.newValue;
-    //const oldVal = params.oldValue;
-    // track cell vaue
-  }
+  onCellValueChanged(params, newValue) {}
 
   render() {
     return (
@@ -193,6 +193,8 @@ class GridAppComponent extends Component {
             onGridReady={this.onGridReady}
             pagination={true}
             paginationPageSize={100}
+            sideBar={true}
+            pivotMode={true}
             sideBar={this.state.sideBar}
             icons={this.state.icons}
             rowData={this.state.rowData}
