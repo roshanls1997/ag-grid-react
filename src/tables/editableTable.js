@@ -6,7 +6,7 @@ const EditableTable = () => {
     return (
         <div id="grid-wrapper" style={{ width: "100%", height: "100%" }}>
             <div
-                id="myGrid1"
+                id="myGrid"
                 style={{
                 height: "600px",
                 width: "100%",
