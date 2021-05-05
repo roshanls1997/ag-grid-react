@@ -1,10 +1,10 @@
-import UserGrid from './component/users/user-grid';
+import Tabs from './component/tab/tabs';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <UserGrid />
+        <Tabs />
       </header>
     </div>
   );
