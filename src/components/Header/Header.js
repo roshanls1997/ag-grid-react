@@ -10,19 +10,9 @@ const Header = () => {
 
 	return (
 		<header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="/ab"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-		    <Button className="practice-button" onClick={() => {history.push('/practice')}} inverted >Go to AgGrid page</Button>
+        
+		    <Button  onClick={() => {history.push('/practice')}} inverted >Go to AgGrid page</Button>
+        <Button  onClick={() => {history.push('/row-grouping')}} inverted >Row Grouping</Button>
       </header>
 	)
 
