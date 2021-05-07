@@ -104,6 +104,9 @@ const AgGridTable = () => {
                   field="athlete"
                   filter="agSetColumnFilter"
                   filterParams={{ applyMiniFilterWhileTyping: true }}
+                  headerCheckboxSelection={true}
+                  headerCheckboxSelectionFilteredOnly={true}
+                  checkboxSelection={true}
                 />
                 <AgGridColumn
                   field="country"
