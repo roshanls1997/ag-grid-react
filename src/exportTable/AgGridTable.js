@@ -32,6 +32,10 @@ const AgGridTable = () => {
     gridApi.exportDataAsCsv();
   };
 
+  const clearFilters = () => {
+    gridApi.setFilterModel(null);
+  };
+
   const onPageSizeChanged = (newPageSize) => {
     var value = document.getElementById("page-size").value;
     gridApi.paginationSetPageSize(Number(value));
@@ -53,9 +57,23 @@ const AgGridTable = () => {
           </button>
           <button
             onClick={() => onBtExportCSV()}
-            style={{ marginBottom: "5px", fontWeight: "bold" }}
+            style={{
+              marginBottom: "5px",
+              fontWeight: "bold",
+              marginRight: "5px",
+            }}
           >
             Export to CSV
+          </button>
+          <button
+            onClick={() => clearFilters()}
+            style={{
+              marginBottom: "5px",
+              fontWeight: "bold",
+              marginRight: "5px",
+            }}
+          >
+            Reset Filters
           </button>
         </div>
         <div className="grid-wrapper">
