@@ -1,5 +1,5 @@
 @import '../../../node_modules/ag-grid-community/src/styles/ag-grid.scss';
-@import '../../../node_modules/ag-grid-community/src/styles/ag-theme-alpine/sass/ag-theme-alpine-mixin';
+@import '../../../node_modules/ag-grid-community/src/styles/ag-theme-material/sass/ag-theme-material-mixin';
 
 .practice-page {
   width: 100%;
@@ -9,8 +9,8 @@
 	padding: 20px;
 }
 
-.ag-theme-alpine {
-  @include ag-theme-alpine((
+.ag-theme-material {
+  @include ag-theme-material((
     //odd-row-background-color: #BFC8DC
   ));
 }
