@@ -17,56 +17,41 @@ const RowGrouping = () => {
           .then((data) => updateData(data));
       };
 
-	// const columns = [
-	// 	{
-	// 		headerName: 'Make',
-	// 		field: 'make'
-	// 	},
-	// 	{
-	// 		headerName: 'Model',
-	// 		field: 'model'
-	// 	},
-	// 	{
-	// 		headerName: 'Price',
-	// 		field: 'price'
-	// 	}
-	// ]
-
-    return (
+	return (
         <div className="practice-page">
 			<section className="ag-grid-table-section">
 				<h2>Row Grouping</h2>
 				<div className="ag-theme-alpine" style={{width: '100%', height: '600px'}}>
 				<div style={{ width: '100%', height: '100%' }}>
-      <div
-        id="myGrid"
-        style={{
-          height: '100%',
-          width: '100%',
-        }}
-        className="ag-theme-alpine"
-      >
-        <AgGridReact
-          defaultColDef={{
-            flex: 1,
-            minWidth: 100,
-            filter: true,
-            sortable: true,
-            resizable: true,
-          }}
-          autoGroupColumnDef={{ minWidth: 200 }}
-          enableRangeSelection={true}
-          animateRows={true}
-          onGridReady={onGridReady}
-          rowData={rowData}
-        >
-          <AgGridColumn field="country" rowGroup={true} />
-          <AgGridColumn field="year" rowGroup={true} />
-          <AgGridColumn field="sport" />
-          <AgGridColumn field="athlete" />
-          <AgGridColumn field="total" />
-        </AgGridReact>
-      </div>
+                <div
+                    id="myGrid"
+                    style={{
+                    height: '100%',
+                    width: '100%',
+                    }}
+                    className="ag-theme-alpine"
+                >
+                    <AgGridReact
+                    defaultColDef={{
+                        flex: 1,
+                        minWidth: 100,
+                        filter: true,
+                        sortable: true,
+                        resizable: true,
+                    }}
+                    autoGroupColumnDef={{ minWidth: 200 }}
+                    enableRangeSelection={true}
+                    animateRows={true}
+                    onGridReady={onGridReady}
+                    rowData={rowData}
+                    >
+                        <AgGridColumn field="country" rowGroup={true} />
+                        <AgGridColumn field="year" rowGroup={true} />
+                        <AgGridColumn field="sport" />
+                        <AgGridColumn field="athlete" />
+                        <AgGridColumn field="total" />
+                    </AgGridReact>
+            </div>
     </div>
 				</div>
 			</section>

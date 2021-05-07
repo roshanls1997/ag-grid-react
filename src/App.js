@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Practice from './components/practice/Practice';
 import RowGrouping from './components/RowGrouping/RowGrouping'
+import Filtering from './components/Filtering/Filtering';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route path="/" exact component={Header} />
           <Route path="/practice" component={Practice} />
           <Route path="/row-grouping" component={RowGrouping} />
+          <Route path="/filter" component={Filtering} />
         </Switch>
       </BrowserRouter>
 
