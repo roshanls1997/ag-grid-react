@@ -24,8 +24,23 @@ const AgGridTable = () => {
       .then((data) => updateData(data));
   };
 
+  const onSelectionChanged = (params) => {
+    //console.log(params);
+    return true;
+  };
+
   const onBtExportExcel = () => {
-    gridApi.exportDataAsExcel();
+    const selectedNodes = gridApi.selectionController.selectedNodes;
+    let onlySelected = false;
+    for (const key in selectedNodes) {
+      if (selectedNodes[key] !== undefined) {
+        onlySelected = true;
+      }
+    }
+
+    gridApi.exportDataAsExcel({
+      onlySelected,
+    });
   };
 
   const onBtExportCSV = () => {
@@ -93,6 +108,7 @@ const AgGridTable = () => {
                 minWidth: 100,
                 flex: 1,
               }}
+              rowSelection={"multiple"}
               onGridReady={onGridReady}
               pagination={true}
               paginationPageSize={10}
