@@ -11,9 +11,10 @@ const Header = () => {
 	return (
 		<header className="App-header">
         
-		<Button  onClick={() => {history.push('/practice')}} inverted >Go to AgGrid page</Button>
+		<Button  onClick={() => {history.push('/practice')}} inverted >Basic Aggrid</Button>
         <Button  onClick={() => {history.push('/row-grouping')}} inverted >Row Grouping</Button>
 		<Button  onClick={() => {history.push('/filter')}} inverted >Filtering</Button>
+		<Button  onClick={() => {history.push('/selections')}} inverted >Selections</Button>
       </header>
 	)
 
