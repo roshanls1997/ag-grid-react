@@ -57,6 +57,21 @@ const Selections = () => {
     gridApi.paginationSetPageSize(Number(value));
   };
 
+  const numberToColor = val => {
+    if (val === 0) {
+      return '#ffaaaa';
+    } else if (val == 1) {
+      return '#aaaaff';
+    } else {
+      return '#aaffaa';
+    }
+  }
+
+  const cellStyle = params => {
+    var color = numberToColor(params.value);
+    return { backgroundColor: color };
+  }
+
   return (
     <div style={{ width: "100%", height: "100%" }}>
       <div className="container">
@@ -130,6 +145,7 @@ const Selections = () => {
                   headerCheckboxSelection={true}
                   headerCheckboxSelectionFilteredOnly={true}
                   checkboxSelection={true}
+                  cellStyle={{ backgroundColor: '#aaffaa' }}
                 />
                 <AgGridColumn
                   field="country"
@@ -142,8 +158,9 @@ const Selections = () => {
                   field="sport"
                   filter="agSetColumnFilter"
                   filterParams={{ applyMiniFilterWhileTyping: true }}
+                  cellStyle={{ backgroundColor: 'lightcoral' }}
                 />
-                <AgGridColumn field="gold" filter="agNumberColumnFilter" />
+                <AgGridColumn field="gold" filter="agNumberColumnFilter" cellStyle={cellStyle}/>
                 <AgGridColumn field="silver" filter="agNumberColumnFilter" />
                 <AgGridColumn field="bronze" filter="agNumberColumnFilter" />
                 <AgGridColumn field="total" filter="agNumberColumnFilter" />
