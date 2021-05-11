@@ -1,23 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import Header from './components/Header/Header';
+import Practice from './components/practice/Practice';
+import RowGrouping from './components/RowGrouping/RowGrouping'
+import Filtering from './components/Filtering/Filtering';
+import Selections from './components/Selections/Selections';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <BrowserRouter>
+        <Switch>
+          <Route path="/" exact component={Header} />
+          <Route path="/practice" component={Practice} />
+          <Route path="/row-grouping" component={RowGrouping} />
+          <Route path="/filter" component={Filtering} />
+          <Route path="/selections" component={Selections} />
+        </Switch>
+      </BrowserRouter>
+
+      
     </div>
   );
 }
