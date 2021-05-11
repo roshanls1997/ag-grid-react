@@ -37,9 +37,15 @@ const Selections = () => {
         onlySelected = true;
       }
     }
+    const params = {
+        fontSize: 40,
+        rowHeight: 20,
+        headerRowHeight: 20,
+      };
 
     gridApi.exportDataAsExcel({
       onlySelected,
+      params
     });
   };
 
@@ -70,6 +76,11 @@ const Selections = () => {
   const cellStyle = params => {
     var color = numberToColor(params.value);
     return { backgroundColor: color };
+  }
+  const excelStyleForSilver = ({value}) => {
+    console.log("vallue",value)
+    const color = value < 3 ? 'red' : 'green' 
+    return {backgroundColor: color}
   }
 
   return (
@@ -125,6 +136,96 @@ const Selections = () => {
                 minWidth: 100,
                 flex: 1,
               }}
+              excelStyles={[
+                {
+                  id: 'cell',
+                  alignment: { vertical: 'Center' },
+                },
+                {
+                  id: 'header',
+                  alignment: { vertical: 'Center' },
+                  interior: {
+                    color: '#f8f8f8',
+                    pattern: 'Solid',
+                  },
+                  borders: {
+                    borderBottom: {
+                      color: '#babfc7',
+                      lineStyle: 'Continuous',
+                      weight: 1,
+                    },
+                  },
+                },
+                {
+                  id: 'headerGroup',
+                  font: { bold: true },
+                },
+                {
+                  id: 'greenBackground',
+                  interior: {
+                    color: '#b5e6b5',
+                    pattern: 'Solid',
+                  },
+                },
+                {
+                  id: 'redFont',
+                  font: {
+                    fontName: 'Calibri Light',
+                    underline: 'Single',
+                    italic: true,
+                    color: '#ff0000',
+                  },
+                },
+                {
+                  id: 'darkGreyBackground',
+                  interior: {
+                    color: '#888888',
+                    pattern: 'Solid',
+                  },
+                  font: {
+                    fontName: 'Calibri Light',
+                    color: '#ffffff',
+                  },
+                },
+                {
+                  id: 'boldBorders',
+                  borders: {
+                    borderBottom: {
+                      color: '#000000',
+                      lineStyle: 'Continuous',
+                      weight: 3,
+                    },
+                    borderLeft: {
+                      color: '#000000',
+                      lineStyle: 'Continuous',
+                      weight: 3,
+                    },
+                    borderRight: {
+                      color: '#000000',
+                      lineStyle: 'Continuous',
+                      weight: 3,
+                    },
+                    borderTop: {
+                      color: '#000000',
+                      lineStyle: 'Continuous',
+                      weight: 3,
+                    },
+                  },
+                },
+                {
+                  id: 'dateFormat',
+                  dataType: 'dateTime',
+                  numberFormat: { format: 'mm/dd/yyyy;@' },
+                },
+                {
+                  id: 'twoDecimalPlaces',
+                  numberFormat: { format: '#,##0.00' },
+                },
+                {
+                  id: 'textFormat',
+                  dataType: 'string',
+                },
+              ]}
               rowDragManaged={true}
               animateRows={true}
               rowSelection={"multiple"}
@@ -161,7 +262,14 @@ const Selections = () => {
                   cellStyle={{ backgroundColor: 'lightcoral' }}
                 />
                 <AgGridColumn field="gold" filter="agNumberColumnFilter" cellStyle={cellStyle}/>
-                <AgGridColumn field="silver" filter="agNumberColumnFilter" />
+                <AgGridColumn field="silver" filter="agNumberColumnFilter" cellStyle={excelStyleForSilver} cellClassRules={{
+                      greenBackground: (params) => {
+                        return params.value > 2;
+                      },
+                      redFont: (params) => {
+                        return params.value < 3;
+                      },
+                    }}/>
                 <AgGridColumn field="bronze" filter="agNumberColumnFilter" />
                 <AgGridColumn field="total" filter="agNumberColumnFilter" />
               </AgGridColumn>
