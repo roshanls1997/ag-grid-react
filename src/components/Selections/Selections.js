@@ -49,6 +49,7 @@ const Selections = () => {
 
   const clearFilters = () => {
     gridApi.setFilterModel(null);
+    gridApi.clearRangeSelection();
   };
 
   const onPageSizeChanged = (newPageSize) => {
@@ -104,11 +105,16 @@ const Selections = () => {
               defaultColDef={{
                 sortable: true,
                 floatingFilter: true,
+                editable: true,
                 resizable: true,
                 minWidth: 100,
                 flex: 1,
               }}
+              rowDragManaged={true}
+              animateRows={true}
               rowSelection={"multiple"}
+              singleClickEdit={true}
+              enableRangeSelection={true}
               onGridReady={onGridReady}
               pagination={true}
               paginationPageSize={10}
@@ -119,6 +125,7 @@ const Selections = () => {
                 <AgGridColumn
                   field="athlete"
                   filter="agSetColumnFilter"
+                  rowDrag={true}
                   filterParams={{ applyMiniFilterWhileTyping: true }}
                   headerCheckboxSelection={true}
                   headerCheckboxSelectionFilteredOnly={true}
